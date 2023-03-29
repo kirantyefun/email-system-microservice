@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-system
+  labels:
+    app: email-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: email-system
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+  template:
+    metadata:
+      labels:
+        app: email-system
+    spec:
+      containers:
+        - name: email-system
+          image: sayamiasis/email_api_auth:latest_for_remote
+          imagePullPolicy: Never
+          envFrom:
+            - configMapRef:
+                name: email-system-configmap
+            - secretRef:
+                name: email-system-secret

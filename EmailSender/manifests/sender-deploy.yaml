@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mailsender
+  labels:
+    app: mailsender
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mailsender
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+  template:
+    metadata:
+      labels:
+        app: mailsender
+    spec:
+      containers:
+        - name: mailsender
+          image: sayamiasis/email_sender:latest
+          imagePullPolicy: Never
+          envFrom:
+            - configMapRef:
+                name: mailsender-configmap
+            - secretRef:
+                name: mailsender-secret

@@ -1,0 +1,42 @@
+# Django stuff
+*.pyc
+__pycache__/
+*.sqlite3
+*.log
+*.pot
+*.pyo
+
+# Static files
+static/
+media/
+
+# Deployment artifacts
+*.env
+*.env.*
+*.envrc
+*.pid
+*.sock
+*.swp
+*.zip
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+
+# Dependency directories
+venv/
+env/
+.venv/
+env.bak/
+.eggs/
+bin/
+include/
+lib/
+lib64/
+
+# Editors
+.vscode/
+.idea/
+
+# System
+.DS_Store
+Thumbs.db

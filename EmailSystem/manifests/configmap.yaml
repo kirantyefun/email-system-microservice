@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: email-system-configmap
+data:
+  POSTGRESQL_USER: sayamiasis
+  POSTGRESQL_HOST: "10.103.12.10"
+  POSTGRESQL_DB: email_system
+  POSTGRESQL_PORT: "5432"

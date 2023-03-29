@@ -1,0 +1,38 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: email-system-ingress
+#   annotations:
+#     nginx.ingress.kubernetes.ip/proxy-body-size: "0"
+#     nginx.ingress.kubernetes.ip/proxy-read-timeout: "600"
+#     nginx.ingress.kubernetes.ip/proxy-send-timeout: "600"
+# spec:
+#   rules:
+#     - host: check-my-email-system.com
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: email-system
+#                 port:
+#                   number: 8000
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: django-ingress
+spec:
+  rules:
+  - host: check-my-email-system.com
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: email-system
+            port:
+              number: 8000
+              
