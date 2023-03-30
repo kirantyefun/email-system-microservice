@@ -89,6 +89,97 @@ User Endpoints:
     
     `{}` 
     
+EmailTemplate Endpoints:
+
+1.  **POST api/v1/emails/email-template/**
+    
+    Endpoint for email template creation. Only admin Users can create a new email-template.
+    
+    Request Body:
+    
+    
+    `{
+	"name": "Sample Template 11",
+	"subject": "Sample Subject 11",
+	"body": "Sample Body 11"
+}` 
+    
+    Response Body:
+    
+    `{
+	"id": 5,
+	"name": "Sample Template 11",
+	"subject": "Sample Subject 11",
+	"body": "Sample Body 11",
+	"created": "2023-03-30T06:54:15.278178Z",
+	"modified": "2023-03-30T06:54:15.278239Z"
+}` 
+    
+2.  **GET api/v1/emails/email-template/**
+    
+    Endpoint to list existing email-templates. Any user(authenticated/unauthenticated) can view existing email templates.
+    
+    
+    Response Body: 
+    
+    `
+    "results": [
+		{
+			"id": 1,
+			"name": "Welcome Onboard",
+			"subject": "Welcome Onboard",
+			"body": "We are please to offer you this role. Onboarding will begin from tomorrow.",
+			"created": "2023-03-25T14:59:11.108300Z",
+			"modified": "2023-03-25T14:59:11.114470Z"
+		},
+		{
+			"id": 2,
+			"name": "Sorry Template",
+			"subject": "Better Luck Next Time",
+			"body": "We appreciate your interest in this role but we are sorry to inform you that not moving forward with your application.",
+			"created": "2023-03-25T14:59:11.108300Z",
+			"modified": "2023-03-25T14:59:11.114470Z"
+		},
+    `
+
+3. **Update, PartialUpdate and Retrieve also available as PUT, PATCH and GET respectively**
+    
+SentEmail Endpoints:
+1.  **POST api/v1/emails/sent-email/**
+    
+    Endpoint for sending email. Creates a single sent_email instance. Creates new instances of Recipient in bulk if not already present in DB. Associates sent_email instance with instances of Recipient. Sends email to the mentioned recipients using emailId of the user sending request.
+    
+    Request Body:
+    
+    `{
+	"recipients": ["kirantyefun@gmail.com", "sayamiasis@gmail.com"],
+	"template": 1
+}` 
+    
+    Response Body:
+    
+    `{
+	"message": "Email sent. It might take a while to deliver."
+}` 
+    
+2.  **GET api/v1/emails/sent-email/**
+    
+    Endpoint to list all sent emails by current user. Only authenticated user can view their sent emails.
+    
+    - Accepted query params:
+    
+    | Param | Type | Detail|
+    |--|--|--|
+    | recipient1 | string |	EmailId of the recipient1 |
+    | recipient2 | string |	EmailId of the recipient2 |
+    | recipientN | string |	EmailId of the recipientN |
+    | start_time | datetime | start datetime of the range of timeframe|
+    | end_time | datetime | end datetime of the range of timeframe|
+    
+    Example request with query params:
+    - *localhost:8000/api/v1/emails/sent-email/?recipient=1@gmail.com&recipient=3@gmail.com&start_time=2023-03-25*
+    
+
 
 ## Development
 
