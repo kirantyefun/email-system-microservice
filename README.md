@@ -35,7 +35,7 @@ Base URL: [http://localhost:8000/api/v1/](http://localhost:8000/api/v1/)
 
 Authentication: Token-based authentication is used for accessing the API endpoints. Users can obtain an authentication token by sending a POST request to the `login/` endpoint with their credentials.
 
-User Endpoints:
+## User Endpoints:
 
 1.  **POST api/v1/users/register/**
     
@@ -89,7 +89,7 @@ User Endpoints:
     
     `{}` 
     
-EmailTemplate Endpoints:
+## EmailTemplate Endpoints:
 
 1.  **POST api/v1/emails/email-template/**
     
@@ -144,7 +144,8 @@ EmailTemplate Endpoints:
 
 3. **Update, PartialUpdate and Retrieve also available as PUT, PATCH and GET respectively**
     
-SentEmail Endpoints:
+## SentEmail Endpoints:
+
 1.  **POST api/v1/emails/sent-email/**
     
     Endpoint for sending email. Creates a single sent_email instance. Creates new instances of Recipient in bulk if not already present in DB. Associates sent_email instance with instances of Recipient. Sends email to the mentioned recipients using emailId of the user sending request.
